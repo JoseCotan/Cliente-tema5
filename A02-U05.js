@@ -1,8 +1,9 @@
-document.addEventListener('keydown', function (e) {
-    let caja = document.getElementById('caja');
-    let x = parseInt(caja.style.left) || 0
-    let y = parseInt(caja.style.top) || 0
+let caja = document.getElementById('caja');
 
+let x = 0
+let y = 0
+
+document.addEventListener('keydown', function (e) {
     if (e.key === 'ArrowUp' || e.key === 'NumPad8') {
         caja.style.top = `${y -= 10}px`;
     } else if (e.key === 'ArrowDown' || e.key === 'NumPad2') {
