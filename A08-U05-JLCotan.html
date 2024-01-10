@@ -6,13 +6,13 @@
         <title>Document</title>
         <style>
         fieldset {
-            width: 500px;
+            width: 600px;
             margin-bottom: 30px;
         }
     </style>
     </head>
     <body>
-        <form>
+        <form action="mailto:joseluis.cotan@iesdonana.org?subject=Consultas%20dietas&body=Deseo%20información%20sobre%20las%20dietas" method="post">
             <fieldset>
                 <legend>Datos personales</legend>
                 <label>Introduce tu nombre:</label>
@@ -27,6 +27,7 @@
             <input type="radio" name="color" id="blue">Azul<br><br>
 
             <label for="asig">Selecciona una asignatura:</label>
+
             <select name="asig" id="asig">
                 <option value="0">Empresa</option>
                 <option value="1">Despliegue</option>
@@ -37,28 +38,28 @@
 
             Seleccione los días con disponibilidad:<br>
             <label for="lunes">
-                <input type="checkbox" name="lunes" id="lunes"> Lunes
+                <input class="dias" type="checkbox" name="Lunes" id="lunes"> Lunes
             </label><br>
 
             <label for="martes">
-                <input type="checkbox" name="martes" id="martes"> Martes
+                <input class="dias" type="checkbox" name="Martes" id="martes"> Martes
             </label><br>
 
             <label for="miercoles">
-                <input type="checkbox" name="miercoles" id="miercoles">
+                <input class="dias" type="checkbox" name="Miércoles" id="miercoles">
                 Miércoles
             </label><br>
 
             <label for="jueves">
-                <input type="checkbox" name="jueves" id="jueves"> Jueves
+                <input class="dias" type="checkbox" name="Jueves" id="jueves"> Jueves
             </label><br>
 
             <label for="viernes">
-                <input type="checkbox" name="viernes" id="viernes"> Viernes
+                <input class="dias" type="checkbox" name="Viernes" id="viernes"> Viernes
             </label><br>
 
             <p>Selecciona el día preferente:
-                <select>
+                <select id="dias">
                     <option value="0">Lunes</option>
                     <option value="1">Martes</option>
                     <option value="2">Miércoles</option>
@@ -69,7 +70,7 @@
                 </select>
             </p>
 
-            <button>Haz click para enviar información</button>
+            <button id="enviar">Haz click para enviar información</button>
             <button id="rellenar">Comenzar a rellenar de nuevo</button>
             <button>
                 <a href="https://www.google.es">Haz click sobre mí</a>
