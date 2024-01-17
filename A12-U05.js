@@ -2,6 +2,7 @@ let cookie = decodeURIComponent(document.cookie);
 let form = document.forms[0];
 let mostrar = document.getElementById("mostrar");
 let valores = ["DNI: ", "Nombre: ", "Nacimiento: ", "Email: ", "Página web: "];
+let valoresCookie = ["dni", "nombre", "nac", "email", "web"];
 let inputs = [dni, nombre, nac, email, web];
 let letra = ["T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N",
     "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E"];
@@ -10,7 +11,7 @@ let letra = ["T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N",
 form.addEventListener("change", function () {
     if (dni.value !== '' && !form.elements["dni"].checkValidity()) {
         dni.value = '';
-        alert("DNI incorrecto.");
+        dni.setCustomValidity("Dni incorrecto.");
     } else if (!comprobarLetra(dni.value)) {
         dni.value = '';
         alert("Letra incorrecta.");
@@ -36,7 +37,7 @@ form.addEventListener("change", function () {
     }
 });
 
-guardar.addEventListener("click", function () {
+document.getElementById("guardar").addEventListener("click", function () {
     if (dni.value !== '' &&
         nombre.value !== '' &&
         nac.value !== '' &&
@@ -55,27 +56,43 @@ guardar.addEventListener("click", function () {
     }
 });
 
-ver.addEventListener("click", function () {
+document.getElementById("ver").addEventListener("click", function () {
     if (comprobarCookie()) {
-        let datos = cookie.split(';');
+        let datos = cookie.split('; ');
         for (let i = 0; i < 5; i++) {
             if (i == 0) {
-                mostrar.innerHTML = `${valores[i]}${datos[i].split("=")[1]}<br>`;
+                mostrar.innerHTML = `${valores[i]}${getCookie(valoresCookie[i])}<br>`;
             } else {
-                mostrar.innerHTML += `${valores[i]}${datos[i].split("=")[1]}<br>`;
+                mostrar.innerHTML += `${valores[i]}${getCookie(valoresCookie[i])}<br>`;
             }
         }
     }
 });
 
-introducir.addEventListener("click", function () {
+document.getElementById("introducir").addEventListener("click", function () {
     if (comprobarCookie()) {
-        let datos = cookie.split(';');
+        let datos = cookie.split('; ');
+        console.log(datos)
         for (let i = 0; i < 5; i++) {
-            inputs[i].value = `${datos[i].split("=")[1]}`;
+            inputs[i].value = getCookie(valoresCookie[i]);
         }
     }
 });
+
+function getCookie(name) {
+    let cname = name + "=";
+    let dc = document.cookie;
+    if (dc.length > 0) {
+        begin = dc.indexOf(cname);
+        if (begin != -1) {
+            begin += cname.length;
+            end = dc.indexOf(";", begin);
+            if (end == -1) end = dc.length;
+            return decodeURIComponent(dc.substring(begin, end));
+        }
+    }
+    return null;
+}
 
 function comprobarCookie() {
     if (document.cookie.length > 0) {
