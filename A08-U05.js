@@ -36,4 +36,8 @@ enviar.addEventListener('click', function () {
 
 ${mensaje.value}`)}`;
     window.location.href = mailto;
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> 9a23bf64f3a3bfe404534e12e3cd472a354ba7dc
