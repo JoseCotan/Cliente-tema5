@@ -5,24 +5,24 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         <style>
-        fieldset {
+        label {
             width: 600px;
             margin-bottom: 30px;
         }
     </style>
     </head>
     <body>
-        <form action="mailto:joseluis.cotan@iesdonana.org?subject=Consultas%20dietas&body=Deseo%20información%20sobre%20las%20dietas" method="post">
+        <form>
             <fieldset>
                 <legend>Datos personales</legend>
                 <label>Introduce tu nombre:</label>
-                <input><br>
+                <input id="nombre"><br>
                 <label>Mensaje:</label><br>
-                <textarea cols="55" rows="5"></textarea>
+                <textarea cols="55" rows="5" id="mensaje"></textarea>
             </fieldset>
             <label for="color">Elige un color:</label><br>
 
-            <input type="radio" name="color" id="red">Rojo<br>
+            <input type="radio" name="color" id="red" value="rojo">Rojo<br>
             <input type="radio" name="color" id="green">Verde<br>
             <input type="radio" name="color" id="blue">Azul<br><br>
 
@@ -70,7 +70,8 @@
                 </select>
             </p>
 
-            <button id="enviar">Haz click para enviar información</button>
+            <a href="mailto:prueba@prueba.com?subject=ProbandoSubject&body=ProbandoBody">Prueba</a>
+            <button type="submit" id="enviar">Haz click para enviar información</button>
             <button id="rellenar">Comenzar a rellenar de nuevo</button>
             <button>
                 <a href="https://www.google.es">Haz click sobre mí</a>
