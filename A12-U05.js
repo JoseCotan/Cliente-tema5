@@ -8,10 +8,14 @@ let letra = ["T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N",
 
 
 form.addEventListener("change", function () {
-    if (!comprobarLetra(dni.value)) {
+    if (dni.value !== '' && !form.elements["dni"].checkValidity()) {
         dni.value = '';
         alert("DNI incorrecto.");
-    } else if (nombre.value !== '' && !form.elements["nombre"].checkValidity()) {
+    } else if (!comprobarLetra(dni.value)) {
+        dni.value = '';
+        alert("Letra incorrecta.");
+    }
+    else if (nombre.value !== '' && !form.elements["nombre"].checkValidity()) {
         nombre.value = '';
         alert("Nombre incorrecto.");
     } else if (nac.value !== '' && !form.elements["nac"].checkValidity()) {
